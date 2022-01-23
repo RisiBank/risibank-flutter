@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
             url: Uri.parse(
                 "https://risibank.fr/embed?"
                 "theme=light"
-                "&mediaSize=md"
+                "&mediaSize=lg"
                 "&navbarSize=lg"
                 "&showCopyButton=true"
                 "&allowUsernameSelection=false"
@@ -63,8 +63,18 @@ class MyApp extends StatelessWidget {
             );
           } else if (eventData['type'] == 'risibank-media-copy') {
             dynamic media = eventData['media'];
+            // Actually share the URL to the clipboard
             Clipboard.setData(ClipboardData(text: media['source_url']));
-            Share.share(media['source_url']);
+            // Share URL? -> Share.share(media['source_url']);
+            // Show confirmation:
+            final snackBar = SnackBar(
+              content: const Text('Lien noelshack copié'),
+              action: SnackBarAction(
+                label: 'OK',
+                onPressed: () { },
+              ),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
       ),
