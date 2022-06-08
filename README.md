@@ -1,3 +1,3 @@
-# app_risibank_fr
+# RisiBank Flutter
 
-Banque officielle des médias humoristiques
+RisiBank, but on your smartphone 📱
